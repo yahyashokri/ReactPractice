@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 
 function Posts() {
     const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    axios.get('https://jsonplaceholder.typicode.com/posts')
-      .then(response => {
-        setPosts(response.data);
-      })
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then(response => response.json())
+      .then(data => setPosts(data))
       .catch(error => {
         console.error('Error fetching data:', error);
         alert('Error fetching data!')

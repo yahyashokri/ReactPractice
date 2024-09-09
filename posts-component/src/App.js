@@ -1,23 +1,34 @@
 import './App.css';
-import PostCard from './components/PostCard/test2';
-// import React, { useEffect, useState } from 'react';
+import PostCard from './components/PostCard/PostCard';
+import React, { useEffect, useState } from 'react';
 
 function App() {
-  // const [data, setData] = useState([]);
+  const [posts, setPosts] = useState([]);
 
-  // useEffect(() => {
-  //   const rawData = fetch('https://jsonplaceholder.typicode.com/posts')
-  //     .then(response => {
-  //       setData(rawData.json);
-  //     })
-  //     .catch(error => {
-  //       console.error('Error fetching data:', error);
-  //       alert('Error fetching data!')
-  //     });
-  // }, []);
+  useEffect(() => {
+    const fetchData = async()=>{
+      const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+      const data = await response.json();
+      await setPosts(data)
+    }
+    fetchData()
+    // fetch('https://jsonplaceholder.typicode.com/posts')
+    // .then(response => response.json())
+    // .then(data => setData(data))
+    // .then(console.log(data))
+    // .catch(error => {
+    //     console.error('Error fetching data:', error);
+    //     alert('Error fetching data!')
+    //   });
+  }, []);
 
   return (
-         <PostCard className="box-border "/>
+    <>
+    {posts.map(post =>(
+      <PostCard key={post.id} title = {post.title} body = {post.body}/>
+    ))
+  }
+  </>
   );
 }
 
