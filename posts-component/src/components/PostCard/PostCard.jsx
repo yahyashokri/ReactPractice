@@ -1,4 +1,4 @@
-function PostCard( title , body ) {
+function PostCard( {title , body} ) {
   return (
     <div className="box-border bg-gray-500" >
           {title ? <h2>{title}</h2>: <h2>Loading...</h2>}

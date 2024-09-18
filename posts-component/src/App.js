@@ -24,9 +24,9 @@ function App() {
 
   return (
     <>
-    {posts.map(post =>(
-      <PostCard key={post.id} title = {post.title} body = {post.body}/>
-    ))
+    {posts.map(post =>{return(
+      <PostCard key={post.id} title={post.title} body={post.body}/>
+    )})
   }
   </>
   );
