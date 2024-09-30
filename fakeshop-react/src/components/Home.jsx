@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Item from './Item'
 import ProductContext from '../context/ProductContext'
@@ -6,8 +6,15 @@ function Home() {
     const searchBar = useRef(undefined)
     const products = useContext(ProductContext)
     const [shownProduct, setShownProduct] = useState(products.data)
+    useEffect(() => {
+      
+      setShownProduct(products.data)
+    
+
+    }, [products.data])
+    
     const search = () =>{
-        let word = searchBar.current.value
+      let word = searchBar.current.value
         setShownProduct(products.data.filter((products)=>{
             return products.title.toLowerCase().includes(word.toLowerCase())
         }))
@@ -22,10 +29,11 @@ function Home() {
       </p>
       </Link>
       <h1 className='font-extrabold overline decoration-lime-700 decoration-dotted font-mono antialiased'>Yahya Kala</h1>
+      <div className='relative h-10 w-8/12'>
+      <i class="fa-solid fa-magnifying-glass absolute  w-6 h-8"></i>
       <input type="text" onChange={search} ref={searchBar} placeholder='Search' className=' h-10 w-8/12 rounded-3xl'/>
-    </header>
-    <section className='grid grid-cols-2'>
-
+      </div>
+    </header>    <section className='grid grid-cols-2'>
  { shownProduct.map(
      (product) =>{
          return(

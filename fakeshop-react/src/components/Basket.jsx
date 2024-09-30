@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom'
 const Basket = () => {
     const product = useContext(ProductContext)
 
-
   return (
     <>
     <header className='w-full h-14 mb-6 bg-gray-200 flex justify-around items-center fixed top-0' >
@@ -20,11 +19,13 @@ const Basket = () => {
     </p>
     </Link>
   </header>
-         {product.basket?product.basket.map((basketProduct) =>{
+         {product.basket.length > 0 ?product.basket.map((basketProduct) =>{
           return(
     <BasketItem key={basketProduct.id} data={basketProduct}/>
 )  
-}):<img src='empty.png' alt='empty basket' className='w-96 h-96'/>}
+}):<div className='w-full h-screen flex justify-center'>
+  <img src='emptyBasket.png' alt='empty basket' className='w-auto h-full'/>
+  </div>}
 </>
 )
 }

@@ -1,15 +1,15 @@
 import React, { useContext } from 'react'
 import ProductContext from '../context/ProductContext'
-import logo from "./assets/logo.png"
+
 
 const Item = ({data}) => { 
   const product = useContext(ProductContext)
   const addBasket = (e) => {
     !product.basket.includes(data) ? product.setBasket(oldData => [...oldData , data]) : alert("Product is out of stock!")
-    console.log(product.basket)
+
   }
   return (
-    !data ?<div>
+    data === [] ?<div>
      loading...
     </div>
     : <div className="grid grid-cols-2 grid-rows-7 border-solid border-e border-b border-gray-300 h-[400px] w-full mt-14">
