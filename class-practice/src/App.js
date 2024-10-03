@@ -10,7 +10,7 @@ function App() {
   return (
     <UserContext.Provider value={{users , setUsers}}>
       <section className='grid grid-cols-2 '>
-        <div className='col-start-2 col-end-3 border-l-2 border-gray-400'>
+        <div className='col-start-2 col-end-3 border-l-2 border-gray-400 h-screen'>
         <div className='flex items-center flex-col w-full '>
     <Inputs />
         </div>

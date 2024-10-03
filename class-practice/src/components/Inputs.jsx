@@ -8,14 +8,14 @@ const Inputs = () => {
     const numberInput = useRef('')
     const users = useContext(UserContext)
     const addUser = ()=>{
-        users.setUsers(oldData => [...oldData , {
+        const emailExists =  users.users.some((user)=>user.email === emailInput.current.value)
+        const numberExists =  users.users.some((user)=>user.number === numberInput.current.value)
+        emailExists || numberExists ?alert("User already exists!"):users.setUsers(oldData => [...oldData , {
             name: nameInput.current.value,
             surName:surNameInput.current.value,
             email:emailInput.current.value,
             number:numberInput.current.value
-        }])
-        console.log(users.users);
-        
+        }])        
     }
   return (
     <>
